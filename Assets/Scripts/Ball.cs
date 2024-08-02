@@ -35,6 +35,14 @@ public class Ball : MonoBehaviour
         _isTouchPlayer = false;
     }
 
+    private void Update()
+    {
+        _xPos = this.transform.position.x;
+        _xPosEnemy = enemy.transform.position.x;
+        _xPosPlayer = player.transform.position.x;
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("RightWall"))
@@ -71,7 +79,7 @@ public class Ball : MonoBehaviour
             if (_direction.y < 0) _direction.y *= -1;
             _rb.velocity = _direction;
         }
-        else
+        else if(_isTouchEnemy)
         {
             if (_direction.y > 0) _direction.y *= -1;
             _rb.velocity = _direction;
