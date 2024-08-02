@@ -16,15 +16,18 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if( ball.transform.position.y >= 0) Move();
-        else _rb.velocity = new Vector2(0,0);
+        if(ball != null)
+        {
+            if (ball.transform.position.y >= 0 && ball.transform.position.x >= -2.3f && ball.transform.position.x <= 2.3f) Move();
+            else _rb.velocity = new Vector2(0, 0);
+        }
     }
 
     private void Move()
     {
         
-        if (this.transform.position.x + speed < ball.transform.position.x) _rb.velocity = new Vector2(speed, 0);
-        else if(this.transform.position.x - speed > ball.transform.position.x) _rb.velocity = new Vector2(-speed, 0);
+        if (this.transform.position.x < ball.transform.position.x) _rb.velocity = new Vector2(speed, 0);
+        else if(this.transform.position.x > ball.transform.position.x) _rb.velocity = new Vector2(-speed, 0);
         else _rb.velocity = new Vector2(0, 0);
     }
 }

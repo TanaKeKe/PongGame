@@ -8,6 +8,10 @@ TagManager:
   - Score
   - Ball
   - Enemy
+  - ScoreEnemy
+  - ScorePlayer
+  - RightWall
+  - LeftWall
   layers:
   - Default
   - TransparentFX
