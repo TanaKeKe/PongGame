@@ -4,14 +4,28 @@ using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
 public class Enemy : MonoBehaviour
-{
+{ 
+     
     [SerializeField] private GameObject ball;
     [SerializeField] private float speed;
+    private AudioSource audioSource;
     private Rigidbody2D _rb;
     private void Awake()
     {
         _rb = gameObject.GetComponent<Rigidbody2D>();
         _rb.velocity = new Vector2(0,0);
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            if(audioSource != null && audioSource.clip != null)
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+            } 
+        }
     }
 
     private void Update()
