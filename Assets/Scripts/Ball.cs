@@ -20,6 +20,7 @@ public class Ball : MonoBehaviour
     private Vector2 _direction;
     private int _pointPlayer;
     private int _pointEnemy;
+    
     [SerializeField] private TMPro.TextMeshProUGUI scorePlayer;
     [SerializeField] private TMPro.TextMeshProUGUI scoreEnemy;
     [SerializeField] private GameObject player;
